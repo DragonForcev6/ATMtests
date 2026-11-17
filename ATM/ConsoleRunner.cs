@@ -24,7 +24,7 @@ public static class ConsoleRunner
             }
         }
         
-        Console.WriteLine("Tack och hej!");
+        Console.WriteLine("Tack och hej leverpastej!");
         
     }
 
