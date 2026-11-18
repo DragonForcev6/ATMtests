@@ -1,10 +1,19 @@
 ﻿namespace ATM.ATM.Tests;
 
+
 using Xunit;
 
 public class AccountTest
 {
-    
+
+
+    Account setupAccount(int balance)
+    {
+        int accountBalance = balance;
+        Account account = new Account(accountBalance);
+        return account;
+
+    }
 
     [Fact]
     public void IsAccountTest()
@@ -12,35 +21,57 @@ public class AccountTest
         int accountBalance = 5000;
         Account account = new Account(accountBalance);
         Assert.IsType<Account>(account);
-        Assert.Equal(accountBalance, accountBalance);
+        Assert.Equal(accountBalance, account.Balance);
     }
 
     [Fact]
     public void WithdrawTest()
     {
         // set up
-        int accountBalance = 5000;
-        Account account = new Account(accountBalance);
+        /*int accountBalance = 5000;
+        Account account = new Account(accountBalance);*/
+
+        var account = setupAccount(5000);
+
         // test
         int withdrawal = 1000;
         account.Withdraw(withdrawal);
-
         int expectedBalance = 4000;
-        Assert.Equal(expectedBalance, accountBalance);
+        Assert.Equal(expectedBalance, account.Balance);
     }
 
     [Fact]
     public void WithdrawNotNegativeTest()
     {
         // set up
-        int accountBalance = 1000;
-        Account account = new Account(accountBalance);
+        /*int accountBalance = 1000;
+        Account account = new Account(accountBalance);*/
+
+
+        var account = setupAccount(1000);
+
         // test
         int withdrawal = 2000;
         account.Withdraw(withdrawal);
-
         int expectedBalance = 1000;
-        Assert.Equal(expectedBalance, accountBalance);
+        Assert.Equal(expectedBalance, account.GetBalance());
     }
 
+    [Fact]
+    public void DepositTest()
+    {
+        var account = setupAccount(5000);
+
+        int deposit = 1000;
+        account.Deposit(deposit);
+        int expectedBalance = 6000;
+        Assert.Equal(expectedBalance, account.Balance);
+    }
+
+
 }
+    
+
+
+    
+
