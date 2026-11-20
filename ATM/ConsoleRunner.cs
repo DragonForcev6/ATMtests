@@ -68,7 +68,7 @@ public static class ConsoleRunner
         }
         else
         {
-            Console.WriteLine("Fel PIN.");
+            Console.WriteLine("Fel PIN försök igen.");
             Console.WriteLine("Kortet matas ut.");
             atm.EjectCard();
         }
